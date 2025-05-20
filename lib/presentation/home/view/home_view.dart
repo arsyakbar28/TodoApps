@@ -31,17 +31,18 @@ class HomeView extends StatefulWidget {
 
       //ProggressIndicator
       body: SliderDrawer(
-        appBar: null,
         key: drawerKey,
         isDraggable: false,
         animationDuration: 1000,
         slider: CustomDrawer(),
-        child: Column(
-          children: [
-            HomeAppBar(drawerKey: drawerKey),
-            Expanded(child: _homeBody(textTheme, controller)),
-          ],
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 35.0), // geser ke bawah 16px
+            child: HomeAppBar(drawerKey: drawerKey),
+          ),
         ),
+        child: _homeBody(textTheme, controller),
       ),
     );
   }
@@ -57,7 +58,7 @@ Widget _homeBody(TextTheme textTheme, State controller) {
     child: Column(
       children: [
         Container(
-          margin: const EdgeInsets.only(top: 60),
+          margin: const EdgeInsets.only(top: 5),
           width: double.infinity,
           height: 100,
           child: Row(
