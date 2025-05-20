@@ -1,0 +1,172 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
+import 'package:lottie/lottie.dart';
+import 'package:todoapp/assets/lootie_asset.dart';
+import 'package:todoapp/core.dart';
+import 'package:todoapp/presentation/home/widget/floatingactionbutton.dart';
+import 'package:todoapp/presentation/home/widget/home_app_bar.dart';
+import 'package:todoapp/presentation/home/widget/slider_drawer.dart';
+import 'package:todoapp/presentation/home/widget/taskwidget.dart';
+import 'package:todoapp/utils/app_str.dart';
+
+class HomeView extends StatefulWidget {
+  HomeView({super.key});
+
+  final GlobalKey<SliderDrawerState> drawerKey = GlobalKey<SliderDrawerState>();
+
+  static List<int> testing = [1, 2];
+
+  Widget build(context, HomeController controller) {
+    controller.view = this;
+
+    TextTheme textTheme = Theme.of(context).textTheme;
+    return Scaffold(
+      backgroundColor: Colors.white,
+
+      //FloatingActionButton
+      floatingActionButton: floatingActionButton(),
+
+      //ProggressIndicator
+      body: SliderDrawer(
+        appBar: null,
+        key: drawerKey,
+        isDraggable: false,
+        animationDuration: 1000,
+        slider: CustomDrawer(),
+        child: Column(
+          children: [
+            HomeAppBar(drawerKey: drawerKey),
+            Expanded(child: _homeBody(textTheme, controller)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  State<HomeView> createState() => HomeController();
+}
+
+Widget _homeBody(TextTheme textTheme, State controller) {
+  return SizedBox(
+    width: double.infinity,
+    height: double.infinity,
+    child: Column(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: 60),
+          width: double.infinity,
+          height: 100,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 40,
+                height: 40,
+                child: CircularProgressIndicator(
+                  value: 1 / 3,
+                  backgroundColor: Colors.grey,
+                  valueColor: AlwaysStoppedAnimation(AppColor.primary),
+                ),
+              ),
+              SizedBox(width: 20),
+
+              //Top Level Task Info
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppStr.mainTitle,
+                    style: textTheme.displayLarge?.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 2),
+                  Text(
+                    "1 of 3 Task",
+                    style: textTheme.titleMedium?.copyWith(color: Colors.grey),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+
+        //divider
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Divider(thickness: 2, indent: 90),
+        ),
+
+        //task list
+        Expanded(
+          child:
+              HomeView.testing.isNotEmpty
+                  ? ListView.builder(
+                    itemCount: HomeView.testing.length,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return Dismissible(
+                        direction: DismissDirection.horizontal,
+                        onDismissed: (_) {
+                          // Remove the item from the list and rebuild
+                          // ignore: invalid_use_of_protected_member
+                          controller.setState(() {
+                            HomeView.testing.removeAt(index);
+                          });
+
+                          // Optionally: remove from db here
+                        },
+                        background: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.delete_outline,
+                              color: Colors.red,
+                              size: 30,
+                            ),
+                            SizedBox(width: 20),
+                            Text(
+                              AppStr.deleteTask,
+                              style: TextStyle(
+                                color: Colors.red.withOpacity(0.8),
+                              ),
+                            ),
+                          ],
+                        ),
+                        key: Key(HomeView.testing[index].toString()),
+                        child: const TaskWidget(),
+                      );
+                    },
+                  )
+                  : Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      FadeInUp(
+                        child: SizedBox(
+                          child: Lottie.asset(
+                            lottieURL,
+
+                            animate: HomeView.testing.isNotEmpty ? false : true,
+                          ),
+                        ),
+                      ),
+                      FadeInUp(
+                        from: 30,
+                        child: Text(
+                          AppStr.doneAllTask,
+                          style: textTheme.titleMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+        ),
+      ],
+    ),
+  );
+}
