@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
@@ -66,7 +68,9 @@ class _HomeAppBarState extends State<HomeAppBar> with TickerProviderStateMixin {
             Padding(
               padding: const EdgeInsets.only(right: 20),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  log('Delete Task Button Pressed');
+                },
                 icon: Icon(CupertinoIcons.trash_fill, size: 30),
               ),
             ),

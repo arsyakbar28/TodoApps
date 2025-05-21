@@ -11,15 +11,13 @@ class HomeView extends StatefulWidget {
 
   final GlobalKey<SliderDrawerState> drawerKey = GlobalKey<SliderDrawerState>();
 
-  static List<int> testing = [];
+  static List<int> testing = [1];
 
   Widget build(context, HomeController controller) {
     controller.view = this;
 
     TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      backgroundColor: Colors.white,
-
       //FloatingActionButton
       floatingActionButton: floatingActionButton(),
 
@@ -58,15 +56,6 @@ Widget _homeBody(TextTheme textTheme, State controller) {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                width: 40,
-                height: 40,
-                child: CircularProgressIndicator(
-                  value: 1 / 3,
-                  backgroundColor: Colors.grey,
-                  valueColor: AlwaysStoppedAnimation(AppColor.primary),
-                ),
-              ),
               SizedBox(width: 20),
 
               //Top Level Task Info
@@ -80,11 +69,6 @@ Widget _homeBody(TextTheme textTheme, State controller) {
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  SizedBox(height: 2),
-                  Text(
-                    "1 of 3 Task",
-                    style: textTheme.titleMedium?.copyWith(color: Colors.grey),
                   ),
                 ],
               ),

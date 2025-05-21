@@ -1,5 +1,5 @@
 class AppStr {
-  static const String mainTitle = 'My Task';
+  static const String mainTitle = 'Todo Task';
   static const String deletedTask = 'This Task Has Been Deleted';
   static const String doneAllTask = 'All Tasks Are Done';
   static const String addNewTask = 'Add New Task';

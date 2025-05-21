@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:todoapp/utils/app_str.dart';
 import 'package:todoapp/utils/color_set.dart';
 
 class TaskWidget extends StatelessWidget {
@@ -15,11 +16,11 @@ class TaskWidget extends StatelessWidget {
       child: AnimatedContainer(
         margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         decoration: BoxDecoration(
-          color: AppColor.primary.withOpacity(0.3),
+          color: AppColor.primary.withOpacity(0.7),
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-              color: AppColor.primary.withOpacity(0.2),
+              color: AppColor.primary.withOpacity(0.6),
               blurRadius: 10,
               offset: const Offset(0, 5),
             ),
@@ -34,11 +35,11 @@ class TaskWidget extends StatelessWidget {
             child: AnimatedContainer(
               duration: Duration(milliseconds: 500),
               decoration: BoxDecoration(
-                color: AppColor.primary,
+                color: Colors.white,
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.grey, width: .8),
               ),
-              child: Icon(Icons.check, color: Colors.white),
+              child: Icon(Icons.check, color: AppColor.primary),
             ),
           ),
 
@@ -76,11 +77,11 @@ class TaskWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        "date",
+                        AppStr.dateString,
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),
                       Text(
-                        "subdate",
+                        AppStr.timeString,
                         style: TextStyle(fontSize: 14, color: Colors.white),
                       ),
                     ],

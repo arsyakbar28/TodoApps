@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todoapp/core.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
 }
 

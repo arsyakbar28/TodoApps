@@ -15,9 +15,9 @@ class SplashscreenController extends State<SplashscreenView> {
     super.initState();
     Future.delayed(const Duration(milliseconds: 4000), () {
       if (mounted) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => HomeView()),
-        );
+        Navigator.of(
+          context,
+        ).pushReplacement(MaterialPageRoute(builder: (context) => HomeView()));
       }
     });
   }
