@@ -4,20 +4,14 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import 'package:lottie/lottie.dart';
-import 'package:todoapp/assets/lootie_asset.dart';
 import 'package:todoapp/core.dart';
-import 'package:todoapp/presentation/home/widget/floatingactionbutton.dart';
-import 'package:todoapp/presentation/home/widget/home_app_bar.dart';
-import 'package:todoapp/presentation/home/widget/slider_drawer.dart';
-import 'package:todoapp/presentation/home/widget/taskwidget.dart';
-import 'package:todoapp/utils/app_str.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({super.key});
 
   final GlobalKey<SliderDrawerState> drawerKey = GlobalKey<SliderDrawerState>();
 
-  static List<int> testing = [1, 2];
+  static List<int> testing = [];
 
   Widget build(context, HomeController controller) {
     controller.view = this;

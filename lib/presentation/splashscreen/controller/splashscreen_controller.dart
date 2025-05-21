@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/core.dart';
 import 'package:get/get.dart';
-import 'package:todoapp/core/routes/app_get.dart';
-
 
 class SplashscreenController extends State<SplashscreenView> {
   static late SplashscreenController instance;
@@ -29,10 +27,6 @@ class SplashscreenController extends State<SplashscreenView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    return Scaffold(body: Center(child: CircularProgressIndicator()));
   }
 }

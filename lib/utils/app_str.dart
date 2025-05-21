@@ -1,12 +1,12 @@
 class AppStr {
   static const String mainTitle = 'My Task';
-  static const String deletedTask = 'This task has been deleted';
-  static const String doneAllTask = 'All tasks are done';
-  static const String addNewTask = 'Add new task';
+  static const String deletedTask = 'This Task Has Been Deleted';
+  static const String doneAllTask = 'All Tasks Are Done';
+  static const String addNewTask = 'Add New Task';
   static const String updateCurrentTask = 'Update';
   static const String taskString = 'Task';
-  static const String titleOfTitleTextField = 'What are you planning to do?';
-  static const String addNote = 'Add note';
+  static const String titleOfTitleTextField = 'What Are You Planning To Do ?';
+  static const String addNote = 'Add Note';
   static const String timeString = 'Time';
   static const String dateString = 'Date';
   static const String deleteTask = 'Delete';

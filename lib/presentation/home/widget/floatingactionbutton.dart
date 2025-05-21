@@ -1,6 +1,6 @@
-import 'dart:developer';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:todoapp/presentation/task/view/task_view.dart';
 import 'package:todoapp/utils/color_set.dart';
 
 // ignore: camel_case_types
@@ -11,7 +11,10 @@ class floatingActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        log('add Task clicked');
+        Navigator.push(
+          context,
+          CupertinoPageRoute(builder: (context) => const TaskView()),
+        );
         // Add your onTap code here
       },
       child: Material(
