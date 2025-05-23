@@ -5,7 +5,6 @@ import 'package:todoapp/assets/lootie_asset.dart';
 import 'package:todoapp/presentation/home/view/home_view.dart';
 import 'package:todoapp/presentation/home/widget/taskwidget.dart';
 import 'package:todoapp/utils/app_str.dart';
-import 'package:todoapp/utils/color_set.dart';
 
 // ignore: unused_element
 Widget _homeBody(TextTheme textTheme, State controller) {
@@ -38,6 +37,7 @@ Widget _homeBody(TextTheme textTheme, State controller) {
             ],
           ),
         ),
+
         //divider
         Padding(
           padding: const EdgeInsets.only(top: 10),
